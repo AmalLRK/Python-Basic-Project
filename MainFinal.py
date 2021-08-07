@@ -14,6 +14,7 @@ def checkAnswer(var):
         else :
             if level == 2:
                 armeDeCrime(var)
+
 def initFormul():
     global window, entry
     #mettre à jour le niveau du jeu
@@ -58,7 +59,6 @@ def centerWindow(windowName):
     myTopPos = (windowName.winfo_screenheight() - 350) / 2
     windowName.geometry("%dx%d+%d+%d" % (500, 350, MyLeftPos, myTopPos))
 
-
 #pour l'affichage
 window = Tk()
 window.title("Jeu d'Assassin - Etape 1")
@@ -90,7 +90,12 @@ label.pack()
 #code label de reponse
 label_reponse = Label(window, text="", font=("Arial,40"), bg='#ADD8E6', fg='white')
 label_reponse.pack()
-#window.bind('<Return>', checkAnswer(entry.get()))
+
+#fonction pour lier la touche entrer et la fonction checkAnswer
+def func(event):
+    checkAnswer(entry.get())
+
+window.bind('<Return>', func)
 window.mainloop()
 
 
